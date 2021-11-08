@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from model import deepTNFSLModel, deepZSLModel
+from model import ProTranslatorModel
 from options import model_config, data_loading
 from file_loader import FileLoader
 from torch.utils.data import DataLoader
@@ -12,11 +12,11 @@ import collections
 from sklearn.metrics import precision_recall_curve
 
 
-class DeepTNFSL:
+class ProTranslator:
 
     def __init__(self, model_config):
         self.loss_func = torch.nn.BCELoss()
-        self.model = deepTNFSLModel.deepTNFSLModel(input_nc=model_config.input_nc,
+        self.model = ProTranslatorModel.ProTranslatorModel(input_nc=model_config.input_nc,
                                                 in_nc=model_config.in_nc,
                                                 max_kernels=model_config.max_kernels,
                                                 hidden_dim=model_config.hidden_dim,
@@ -48,7 +48,7 @@ def main():
     model_opt.vector_dim = np.size(list(file.prot_vector.values())[0].reshape(-1), 0)
     model_opt.description_dim = np.size(list(file.prot_description.values())[0].reshape(-1), 0)
     for fold_i in range(data_opt.k_fold):
-        model_predict = DeepTNFSL(model_opt)
+        model_predict = ProTranslator(model_opt)
         train_dataset = DataLoader(file.fold_training[fold_i], batch_size=model_opt.batch_size, shuffle=True)
         inference_dataset = DataLoader(file.fold_validation[fold_i], batch_size=model_opt.batch_size, shuffle=True)
         print('loading data finished')

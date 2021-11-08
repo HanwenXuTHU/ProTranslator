@@ -13,7 +13,7 @@ import collections
 from tqdm import tqdm
 import pickle
 from utils import init_weights, EarlyStopping, compute_roc, vec2classes
-from model import deepTNFSLModel, deepZSLModel
+from model import ProTranslatorModel
 from torch.utils.data import DataLoader
 from options import model_config, data_loading
 
@@ -237,11 +237,11 @@ class FileLoader:
         return train_fold, val_fold
 
 
-class DeepTNFSL:
+class ProTranslator:
 
     def __init__(self, model_config):
         self.loss_func = torch.nn.BCELoss()
-        self.model = deepTNFSLModel.deepTNFSLModel(input_nc=model_config.input_nc,
+        self.model = ProTranslatorModel.ProTranslatorModel(input_nc=model_config.input_nc,
                                                 in_nc=model_config.in_nc,
                                                 max_kernels=model_config.max_kernels,
                                                 hidden_dim=model_config.hidden_dim,

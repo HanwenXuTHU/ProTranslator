@@ -40,4 +40,4 @@ class model_config:
         self.epoch = 30
         self.gpu_ids = '0'
         self.dropout = 0
-        self.save_path = 'results/{}_predict_deepfsl_fold_{}_{}.pth'
+        self.save_path = 'results/{}_predict_ProTranslator_fold_{}_{}.pth'
