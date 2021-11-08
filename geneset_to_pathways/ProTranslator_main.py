@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from model import deepTNFSLModel
+from model import ProTranslatorModel
 from options import model_config, data_loading
 from file_loader import FileLoader
 from torch.utils.data import DataLoader
@@ -16,11 +16,11 @@ import pickle
 import collections
 
 
-class DeepTNFSL:
+class ProTranslator:
 
     def __init__(self, model_config):
         self.loss_func = torch.nn.BCELoss()
-        self.model = deepTNFSLModel.deepTNFSLModel(input_nc=model_config.input_nc,
+        self.model = ProTranslatorModel.ProTranslatorModel(input_nc=model_config.input_nc,
                                                 in_nc=model_config.in_nc,
                                                 max_kernels=model_config.max_kernels,
                                                 hidden_dim=model_config.hidden_dim,
