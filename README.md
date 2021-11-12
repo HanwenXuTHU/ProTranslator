@@ -12,3 +12,6 @@ ProTranslator is implemented using Python 3.7 in LINUX. ProTranslator requires t
 We provided options.py file as the user interface to specify the data files, model and training parameters. You can define your own class of data_loading and model_config, as long as preserving the varible names constant.
 
 In each folder, you can run ProTanslator_main.py to train the model and generate results in the "results/" file. You can perform the prediction based on the ProTranslator_inference.py file we provided. In the few shot setting, we also proviede the ProTranslator_with_DiamondScore.py file for combining the sequence similarity based predictions.
+
+### Section 2.3: Data Availability
+We provided all the data needed to run the codes. If you want to run these codes, please contact xuhw20@mails.tsinghua.edu.cn, we will give you instructions in more details.
